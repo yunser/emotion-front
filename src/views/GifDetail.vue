@@ -1,5 +1,5 @@
 <template>
-    <my-page title="首页">
+    <my-page title="字幕制作" backable>
         <div v-if="data">
             <div class="card mt-4">
                 <!--<img class="card-img-top img-fluid" src="http://gifmaker.develophelper.com/demo/gif/2.gif" alt="">-->

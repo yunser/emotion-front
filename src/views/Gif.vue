@@ -29,7 +29,7 @@
         },
         methods: {
             init() {
-                this.$http.get('https://gifmaker.develophelper.com/gif/category').then(
+                this.$http.get('/gif/category').then(
                     response => {
                         let data = response.data
                         console.log(data)
