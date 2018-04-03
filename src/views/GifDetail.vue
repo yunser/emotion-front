@@ -23,13 +23,14 @@
                     <a href="javascript:void(0);" id="make" class="btn btn-success" @click.prevent="make">咻的一下生成</a>
                 </div>
             </div>
-            <img class="result" :src="result" v-if="result"/>
+            <!--<img class="result" :src="result" v-if="result"/>-->
         </div>
 
     </my-page>
 </template>
 
 <script>
+    import {apiDomain} from '../config'
     const SEP = '##$@?$?@$##'
 
     export default {
@@ -83,7 +84,7 @@
                     response => {
                         let data = response.data
                         console.log(data)
-                        this.result = data.d.gifurl
+                        this.result = apiDomain + '/' + data.d.gifurl
                     },
                     response => {
                         console.log(response)
