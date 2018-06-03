@@ -1,8 +1,11 @@
 <template>
-    <my-page title="首页">
-        <ul class="list">
+    <my-page title="GIF 配字幕">
+        <ul class="demo-list">
             <li class="item" v-for="item, index in data">
-                <router-link :to="'/gif/' + index">{{ item.name }}</router-link>
+                <router-link class="link" :to="'/gif/' + index">
+                    <img class="thumb" :src="item.gifDemoUrl" />
+                    <div class="title">{{ item.name }}</div>
+                </router-link>
             </li>
         </ul>
     </my-page>
@@ -43,5 +46,28 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.demo-list {
+    .item {
+        float: left;
+        width: 320px;
+        height: 280px;
+        margin-right: 16px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 16px;
+    }
+    .thumb {
+        display: block;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    .link {
+        display: block;
+        color: #333;
+    }
+    .title {
+        padding: 0 16px;
+    }
+}
 </style>

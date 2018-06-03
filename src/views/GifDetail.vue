@@ -1,5 +1,5 @@
 <template>
-    <my-page title="首页">
+    <my-page title="编辑" backable>
         <div v-if="data">
             <div class="card mt-4">
                 <!--<img class="card-img-top img-fluid" src="http://gifmaker.develophelper.com/demo/gif/2.gif" alt="">-->
@@ -16,11 +16,16 @@
                     字幕
                 </div>
                 <div class="card-body">
-                    <div class="form-group" v-for="content, index in contents">
-                        <input type="text" class="form-control" v-model="inputs['' + index]" data-index="0" :placeholder="content" />
-                    </div>
+                    <ul class="input-list">
+                        <li class="item" v-for="content, index in contents">
+                            <input type="text" class="input" v-model="inputs['' + index]" data-index="0" :placeholder="content" />
+                        </li>
+                    </ul>
 
-                    <a href="javascript:void(0);" id="make" class="btn btn-success" @click.prevent="make">咻的一下生成</a>
+                    <div class="btns">
+                        <ui-raised-button class="btn" label="生成" primary @click.prevent="make"/>
+                    </div>
+                    <!-- <a href="javascript:void(0);" id="make" class="btn btn-success" @click.prevent="make">咻的一下生成</a> -->
                 </div>
             </div>
             <img class="result" :src="result" v-if="result"/>
@@ -93,8 +98,23 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    .input-list {
+        .item {
+            margin-bottom: 8px;
+        }
+        .input {
+            width: 240px;
+
+        }
+    }
     .result {
 
+    }
+    .btns {
+        margin-bottom: 16px;
+        .btn {
+            margin-right: 8px;
+        }
     }
 </style>
