@@ -4,7 +4,7 @@ let imgDomain
 let apiDomain
 if (process.env.NODE_ENV === 'production') {
     imgDomain = 'http://120.79.29.47'
-    apiDomain = 'https://gifmaker.develophelper.com'
+    apiDomain = 'http://node.api.yunser.com'
 } else {
     imgDomain = 'http://120.79.29.47'
     // apiDomain = 'http://localhost:9091'
