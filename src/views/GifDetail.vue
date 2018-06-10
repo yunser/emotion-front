@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import {apiDomain} from '../config'
+    // import {apiDomain} from '../config'
     const SEP = '##$@?$?@$##'
 
     export default {
