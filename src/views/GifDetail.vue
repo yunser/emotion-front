@@ -1,5 +1,10 @@
 <template>
     <my-page title="字幕制作" backable>
+        <div class="page-loading-box" v-if="pageLoading">
+            <div class="ui-loading">
+                <ui-circular-progress :size="24"/>
+            </div>
+        </div>
         <div v-if="data">
             <div class="card mt-4">
                 <!--<img class="card-img-top img-fluid" src="http://gifmaker.develophelper.com/demo/gif/2.gif" alt="">-->
@@ -26,12 +31,13 @@
                     <div class="btns">
                         <ui-raised-button class="btn" label="生成" primary @click.prevent="make"/>
                     </div>
-                    <!-- <a href="javascript:void(0);" id="make" class="btn btn-success" @click.prevent="make">咻的一下生成</a> -->
                 </div>
             </div>
-            <img class="result" :src="result" v-if="result"/>
         </div>
-
+        <div class="ui-loading" v-if="loading">
+            <ui-circular-progress :size="24"/>
+        </div>
+        <img class="result" :src="result" v-if="result"/>
     </my-page>
 </template>
 
@@ -42,6 +48,8 @@
     export default {
         data () {
             return {
+                pageLoading: false,
+                loading: false,
                 data: null,
                 contents: [],
                 inputs: {},
@@ -62,6 +70,7 @@
         },
         methods: {
             init() {
+                this.pageLoading = true
                 let id = this.$route.params.id
                 this.$http.get('/gif/category').then(
                     response => {
@@ -74,8 +83,10 @@
                             this.inputs[idx] = this.contents[idx]
                             // this.inputs[idx] = ''
                         }
+                        this.pageLoading = false
                     },
                     response => {
+                        this.pageLoading = false
                         console.log(response)
                     })
             },
@@ -83,6 +94,7 @@
                 for (let idx in this.contents) {
                     this.contents[idx] = this.inputs[idx]
                 }
+                this.loading = true
                 this.$http.post('/gif/make', this.$qs.stringify({
                     tplid: this.data.tplid,
                     content: this.contents.join(SEP)
@@ -92,9 +104,11 @@
                         console.log(data)
                         // this.result = apiDomain + '/' + data.d.gifurl
                         this.result = data.d.gifurl
+                        this.loading = false
                     },
                     response => {
                         console.log(response)
+                        this.loading = false
                     })
             }
         }

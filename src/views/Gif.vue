@@ -1,5 +1,10 @@
 <template>
     <my-page title="GIF 配字幕">
+        <div class="page-loading-box" v-if="loading">
+            <div class="ui-loading">
+                <ui-circular-progress :size="24"/>
+            </div>
+        </div>
         <ul class="demo-list">
             <li class="item" v-for="item, index in data">
                 <router-link class="link" :to="'/gif/' + index">
@@ -15,6 +20,7 @@
     export default {
         data () {
             return {
+                loading: false,
                 data: [],
                 page: {
                     menu: [
@@ -32,14 +38,17 @@
         },
         methods: {
             init() {
+                this.loading = true
                 this.$http.get('/gif/category').then(
                     response => {
                         let data = response.data
                         console.log(data)
                         this.data = data.d
+                        this.loading = false
                     },
                     response => {
                         console.log(response)
+                        this.loading = false
                     })
             }
         }
@@ -47,6 +56,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 .demo-list {
     .item {
         float: left;
