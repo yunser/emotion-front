@@ -18,7 +18,8 @@
                 <div class="card-body">
                     <ul class="input-list">
                         <li class="item" v-for="content, index in contents">
-                            <input type="text" class="input" v-model="inputs['' + index]" data-index="0" :placeholder="content" />
+                            <ui-text-field class="input" v-model="inputs['' + index]" :hintText="content" />
+                            <!-- <input type="text" class="input" v-model="inputs['' + index]" data-index="0" :placeholder="content" /> -->
                         </li>
                     </ul>
 
@@ -70,8 +71,8 @@
                         console.log(this.data)
                         this.contents = this.data.contents.split(SEP)
                         for (let idx in this.contents) {
-//                            this.inputs[idx] = this.contents[idx]
-                            this.inputs[idx] = ''
+                            this.inputs[idx] = this.contents[idx]
+                            // this.inputs[idx] = ''
                         }
                     },
                     response => {
@@ -89,7 +90,8 @@
                     response => {
                         let data = response.data
                         console.log(data)
-                        this.result = apiDomain + '/' + data.d.gifurl
+                        // this.result = apiDomain + '/' + data.d.gifurl
+                        this.result = data.d.gifurl
                     },
                     response => {
                         console.log(response)
