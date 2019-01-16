@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const Home = resolve => require(['@/views/Home'], resolve)
+const Emotion = resolve => require(['@/views/Emotion'], resolve)
+const EmotionTemplate = resolve => require(['@/views/EmotionTemplate'], resolve)
 const Gif = resolve => require(['@/views/Gif'], resolve)
 const GifDetail = resolve => require(['@/views/GifDetail'], resolve)
 const Up = resolve => require(['@/views/Up'], resolve)
@@ -13,6 +16,18 @@ Vue.use(Router)
 let routes = [
     {
         path: '/',
+        component: Home
+    },
+    {
+        path: '/emotion',
+        component: Emotion
+    },
+    {
+        path: '/emotion_template',
+        component: EmotionTemplate
+    },
+    {
+        path: '/gif',
         component: Gif
     },
     {

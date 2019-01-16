@@ -12,3 +12,16 @@
     justify-content: center;
     padding: 40px 0;
 }
+html,
+body,
+#app {
+    height: 100%;
+}
+
+.ui-page-body {
+    -webkit-overflow-scrolling : touch;
+}
+input,
+textarea {
+  -webkit-appearance: none;
+}
