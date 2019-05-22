@@ -1,10 +1,12 @@
 <template>
     <my-page title="举牌小人图片生成">
-        <ui-text-field v-model="text" label="文字内容" multiLine :rows="3" :rowsMax="6" hintText="目前一行为 8 个字" />
-        <div class="btns">
-            <ui-raised-button primary label="生成" @click="make" />
+        <div class="common-container container">
+            <ui-text-field v-model="text" label="文字内容" multiLine :rows="3" :rowsMax="6" hintText="目前一行为 8 个字" />
+            <div class="btns">
+                <ui-raised-button primary label="生成" @click="make" />
+            </div>
+            <img class="result" :src="src" alt="图片" v-if="src">
         </div>
-        <img class="result" :src="src" alt="图片" v-if="src">
     </my-page>
 </template>
 

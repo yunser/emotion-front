@@ -1,18 +1,20 @@
 <template>
     <my-page class="page-emotion" title="表情" :page="page">
-        <div class="search-box">
-            <input class="input" v-model="keyword" placeholder="输入关键词搜索">
-            <ui-icon-button class="icon" icon="search" @click="search" />
-        </div>
-        <ul class="emotion-list">
-            <li class="item" v-for="emotion in emotions">
-                    <img class="img" :src="getUrl(emotion)" :title="emotion.desc">
-                <!-- <div class="img-box">
-                </div> -->
-            </li>
-        </ul>
-        <div class="btns">
-            <ui-raised-button label="加载更多" primary @click="loadMore" v-if="currentPage <= 20" />
+        <div class="common-container container">
+            <div class="search-box">
+                <input class="input" v-model="keyword" placeholder="输入关键词搜索">
+                <ui-icon-button class="icon" icon="search" @click="search" />
+            </div>
+            <ul class="emotion-list">
+                <li class="item" v-for="emotion in emotions">
+                        <img class="img" :src="getUrl(emotion)" :title="emotion.desc">
+                    <!-- <div class="img-box">
+                    </div> -->
+                </li>
+            </ul>
+            <div class="btns">
+                <ui-raised-button label="加载更多" primary @click="loadMore" v-if="currentPage <= 20" />
+            </div>
         </div>
     </my-page>
 </template>

@@ -1,14 +1,16 @@
 <template>
     <my-page class="page-emotion" title="表情模板" :page="page">
-        <ul class="emotion-list">
-            <li class="item" v-for="emotion in emotions">
-                    <img class="img" :src="emotion.url">
-                <!-- <div class="img-box">
-                </div> -->
-            </li>
-        </ul>
-        <div class="btns">
-            <ui-raised-button label="加载更多" primary @click="loadMore" />
+        <div class="common-container container">
+            <ul class="emotion-list">
+                <li class="item" v-for="emotion in emotions">
+                        <img class="img" :src="emotion.url">
+                    <!-- <div class="img-box">
+                    </div> -->
+                </li>
+            </ul>
+            <div class="btns">
+                <ui-raised-button label="加载更多" primary @click="loadMore" />
+            </div>
         </div>
     </my-page>
 </template>

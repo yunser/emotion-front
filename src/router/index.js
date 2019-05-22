@@ -7,7 +7,6 @@ const EmotionTemplate = resolve => require(['@/views/EmotionTemplate'], resolve)
 const Gif = resolve => require(['@/views/Gif'], resolve)
 const GifDetail = resolve => require(['@/views/GifDetail'], resolve)
 const Up = resolve => require(['@/views/Up'], resolve)
-const About = resolve => require(['@/views/About'], resolve)
 
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
@@ -37,10 +36,6 @@ let routes = [
     {
         path: '/up',
         component: Up
-    },
-    {
-        path: '/about',
-        component: About
     },
     {
         path: '*',
